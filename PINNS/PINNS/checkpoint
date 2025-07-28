@@ -1,0 +1,2 @@
+model_checkpoint_path: "poisson_singular_model-30017.ckpt"
+all_model_checkpoint_paths: "poisson_singular_model-30017.ckpt"
