@@ -4,18 +4,25 @@ Welcome to the Enhanced Poisson Image Editor! This guide will help you get start
 
 ## 🚀 Quick Launch (Windows)
 
-1. **Double-click** `launch.bat` to automatically set up and start the application
-2. The application will be available at: `http://localhost:8501`
-3. Open your web browser and navigate to the URL above
+1. **Double-click** `fix_and_run.bat` to automatically set up and start the application (recommended)
+   OR
+2. **Double-click** `launch.bat` for standard launch
+3. The application will be available at: `http://localhost:8501`
+4. Open your web browser and navigate to the URL above
 
 ## 🚀 Quick Launch (Linux/Mac)
 
-1. Run the launch script:
+1. Run the fix script (recommended):
+   ```bash
+   chmod +x fix_and_run.sh
+   ./fix_and_run.sh
+   ```
+2. OR run the standard launch script:
    ```bash
    chmod +x launch.sh
    ./launch.sh
    ```
-2. The application will be available at: `http://localhost:8501`
+3. The application will be available at: `http://localhost:8501`
 
 ## 📋 Manual Setup (If needed)
 
