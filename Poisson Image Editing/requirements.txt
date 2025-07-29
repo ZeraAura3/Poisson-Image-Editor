@@ -1,20 +1,14 @@
 # Core dependencies for Enhanced Poisson Image Editor
-numpy>=1.21.0
-opencv-python>=4.5.0
-scipy>=1.7.0
-matplotlib>=3.3.0
-scikit-image>=0.18.0
-Pillow>=9.5.0
+numpy>=1.21.0,<2.0.0
+opencv-python-headless>=4.5.0,<5.0.0
+scipy>=1.7.0,<2.0.0
+matplotlib>=3.3.0,<4.0.0
+scikit-image>=0.18.0,<1.0.0
+Pillow>=9.5.0,<11.0.0
 
 # Streamlit and web dependencies
-streamlit>=1.28.0
-plotly>=5.15.0
+streamlit>=1.28.0,<2.0.0
+plotly>=5.15.0,<6.0.0
 
-# Optional jupyter dependencies (for notebook)
-jupyter>=1.0.0
-ipywidgets>=7.6.0
-
-# Additional streamlit components (optional)
-streamlit-drawable-canvas>=0.9.0
-streamlit-image-comparison>=0.0.4
-streamlit-cropper>=0.2.1
+# Additional processing
+pandas>=1.3.0,<3.0.0

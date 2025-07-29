@@ -1,3 +1,4 @@
+# Enhanced Poisson Image Editor - Professional Web Application
 import streamlit as st
 import cv2
 import numpy as np
@@ -13,26 +14,42 @@ import tempfile
 import zipfile
 from datetime import datetime
 import json
+import sys
 
-# Fix path issues for deployment
+# Deployment setup for Streamlit Cloud
 try:
-    from path_fix import *
+    from deployment_setup import setup_deployment_paths
 except ImportError:
-    pass
+    # Fallback setup if deployment_setup is not available
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    if current_dir not in sys.path:
+        sys.path.insert(0, current_dir)
+    if os.path.join(current_dir, 'image_processing') not in sys.path:
+        sys.path.insert(0, os.path.join(current_dir, 'image_processing'))
 
-# Import our enhanced image editing classes
+# Import our enhanced image editing classes with better error handling
 try:
     from image_processing.enhanced_blender import AdvancedImageBlender, EnhancedImageCompositor
 except ImportError:
     # Fallback to local import if package import fails
-    import sys
-    import os
-    current_dir = os.path.dirname(os.path.abspath(__file__))
-    sys.path.append(os.path.join(current_dir, 'image_processing'))
     try:
+        current_dir = os.path.dirname(os.path.abspath(__file__))
+        sys.path.append(os.path.join(current_dir, 'image_processing'))
         from enhanced_blender import AdvancedImageBlender, EnhancedImageCompositor
     except ImportError as e:
-        st.error(f"Failed to import image processing modules: {e}")
+        st.error(f"""
+        ❌ **Import Error**: Failed to import image processing modules.
+        
+        **Error details**: {str(e)}
+        
+        **Possible solutions**:
+        1. Ensure all required packages are installed: `pip install -r requirements.txt`
+        2. Check that the `image_processing` directory exists in the project
+        3. Verify the `enhanced_blender.py` file is present
+        4. For deployment issues, check the GitHub repository structure
+        
+        **Current Python path**: {sys.path[:3]}...
+        """)
         st.stop()
 
 # Import UI components (optional)

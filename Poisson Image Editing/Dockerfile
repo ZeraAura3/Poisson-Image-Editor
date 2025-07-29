@@ -17,11 +17,9 @@ RUN apt-get update && apt-get install -y \
 
 # Copy requirements first (for better caching)
 COPY requirements.txt .
-COPY streamlit_requirements.txt .
 
 # Install Python dependencies
 RUN pip install --no-cache-dir -r requirements.txt
-RUN pip install --no-cache-dir -r streamlit_requirements.txt
 
 # Copy application code
 COPY . .
