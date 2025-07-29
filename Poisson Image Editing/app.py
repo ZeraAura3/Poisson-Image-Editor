@@ -14,6 +14,12 @@ import zipfile
 from datetime import datetime
 import json
 
+# Fix path issues for deployment
+try:
+    from path_fix import *
+except ImportError:
+    pass
+
 # Import our enhanced image editing classes
 try:
     from image_processing.enhanced_blender import AdvancedImageBlender, EnhancedImageCompositor
@@ -21,19 +27,28 @@ except ImportError:
     # Fallback to local import if package import fails
     import sys
     import os
-    sys.path.append(os.path.join(os.path.dirname(__file__), 'image_processing'))
-    from enhanced_blender import AdvancedImageBlender, EnhancedImageCompositor
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    sys.path.append(os.path.join(current_dir, 'image_processing'))
+    try:
+        from enhanced_blender import AdvancedImageBlender, EnhancedImageCompositor
+    except ImportError as e:
+        st.error(f"Failed to import image processing modules: {e}")
+        st.stop()
 
 # Import UI components
-from ui_components import (
-    create_interactive_image_viewer,
-    create_parameter_slider_panel,
-    create_comparison_dashboard,
-    create_processing_progress_tracker,
-    create_export_options,
-    create_help_and_tutorials,
-    create_advanced_visualization
-)
+try:
+    from ui_components import (
+        create_interactive_image_viewer,
+        create_parameter_slider_panel,
+        create_comparison_dashboard,
+        create_processing_progress_tracker,
+        create_export_options,
+        create_help_and_tutorials,
+        create_advanced_visualization
+    )
+except ImportError:
+    # UI components are optional - we'll use built-in alternatives
+    st.warning("UI components not found - using built-in interface")
 
 # Configure page
 st.set_page_config(

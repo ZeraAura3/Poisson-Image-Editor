@@ -31,8 +31,7 @@ pip install --upgrade pip
 
 # Install requirements
 echo "📦 Installing dependencies..."
-pip install -r requirements.txt
-pip install -r streamlit_requirements.txt
+pip install -r ./requirements.txt
 
 # Check if installation was successful
 if [[ $? -eq 0 ]]; then
