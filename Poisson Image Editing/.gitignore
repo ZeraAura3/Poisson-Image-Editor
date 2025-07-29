@@ -1,0 +1,60 @@
+# Test files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Streamlit
+.streamlit/secrets.toml
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Temporary files
+temp/
+tmp/
+uploads/
+results/
+
+# Data files (but keep sample pics)
+*.jpg
+*.png
+*.jpeg
+*.gif
+*.bmp
+*.tiff
+!pics/sample_*.jpg
+!pics/sample_*.png
+!pics/demo_*.jpg
+!pics/demo_*.png
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Python virtual environments
+venv/
+env/
+ENV/
+
+# Docker
+.dockerignore
+
+# GitHub
+.github/workflows/*.yml.bak
